@@ -11,11 +11,14 @@ Seznam_title=[]
 Seznam_file=[]
 Seznam_komplet=[]
 
+i=-1
+
 for f in files:
 
 	file=os.path.join(files_folder, f)
 
 	Seznam_file.append(f)
+	i+=1
 
 	with open(file, 'r', encoding='utf-8') as data_source:
 		data = json.load(data_source)
@@ -24,8 +27,6 @@ for f in files:
 			if key=='title':
 				Seznam_title.append(data[key])
 	
-			
-for i in range(len(Seznam_title)):
 	delka=len(Seznam_title[i])
 	Slovnik={'title':Seznam_title[i], 'name':Seznam_file[i], 'delka':delka}
 	Seznam_komplet.append(Slovnik)
@@ -33,5 +34,5 @@ for i in range(len(Seznam_title)):
 Seznam_komplet.sort(key=lambda k : k['delka'])
 
 Longest_title=Seznam_komplet[-1]
+
 print(Longest_title['delka']," :",Longest_title['name'])
-#Slovnik={}
