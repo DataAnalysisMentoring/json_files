@@ -21,13 +21,12 @@ for file in files:
 	with open(file, "r",encoding= "utf_8") as zdroj_data:
 		data = json.load(zdroj_data)
 		
-		for key in data:
-			 if key == "article":
-		 	 	if data[key] == " ":
- 					 empty_files.append(file)
+		if data["article"] == "":
+			empty_files.append(file)
+		
 
 for file in empty_files:
-	print(empty_files.read())
+	print(file)
 
 
 
