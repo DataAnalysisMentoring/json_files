@@ -13,17 +13,21 @@ mydir = "C:/Users/Hesham/Desktop/git_tutorial/json_files/data"
 files=os.listdir(mydir)
 
 title_files = []
-str
+
+
 
 for file in files: 
-	file=os.path.join(mydir, file)
+	file_1=os.path.join(mydir, file)
 
-	with open(file,"r",encoding= "utf_8") as zdroj_data:
+	with open(file_1,"r",encoding= "utf_8") as zdroj_data:
 		data = json.load(zdroj_data)
 
-		if key[0][0]("title") in data:
-			title_files.append(file) 
+		if "title" in data:
+			title_files.append((len(data["title"]), file)) 
+		
 
-for key in title_files:
-	print(len(title)
+m= max(title_files, key=lambda dvojice: dvojice[0])
 
+verze_pro_zobrazeni=list(m)
+
+print(verze_pro_zobrazeni[0],':',verze_pro_zobrazeni[1])
