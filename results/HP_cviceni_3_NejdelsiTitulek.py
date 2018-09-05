@@ -23,16 +23,15 @@ for f in files:
 	with open(file, 'r', encoding='utf-8') as data_source:
 		data = json.load(data_source)
 	
-		for key in data:
-			if key=='title':
-				Seznam_title.append(data[key])
+		if 'title' in data:
+			#rovnou pocitam delku titulku a ukladam jen delku
+			Seznam_title.append(len(data['title']))
 	
-	delka=len(Seznam_title[i])
-	Slovnik={'title':Seznam_title[i], 'name':Seznam_file[i], 'delka':delka}
+	Slovnik={'title':Seznam_title[i], 'name':Seznam_file[i]}
 	Seznam_komplet.append(Slovnik)
 
-Seznam_komplet.sort(key=lambda k : k['delka'])
+Seznam_komplet.sort(key=lambda k : k['title'])
 
 Longest_title=Seznam_komplet[-1]
 
-print(Longest_title['delka']," :",Longest_title['name'])
+print(Longest_title['title']," :",Longest_title['name'])
